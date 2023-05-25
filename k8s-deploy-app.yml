@@ -1,0 +1,22 @@
+# create a basic kubernetes yaml file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acc-app-deployment
+  labels:
+    app: sample-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-web
+  template:
+    metadata:
+      labels:
+        app: sample-web
+    spec:
+      containers:
+      - name: acc-web
+        image: fzns/acloudchap-sampleapp:0.1
+        ports:
+        - containerPort: 5000
